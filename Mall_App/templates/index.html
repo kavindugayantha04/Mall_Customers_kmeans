@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mall AI Predictor</title>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+
+        .card {
+            background: white;
+            padding: 80px;
+            width: 300px;
+            margin: auto;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px gray;
+        }
+
+        input {
+            margin-bottom: 10px;
+            padding: 8px;
+            width: 80%;
+        }
+
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e9ecef;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Mall Customer Segmentation</h1>
+
+    <div class="card">
+        <form action="/predict" method="post">
+            <input type="number" name="age" placeholder="Age" required>
+            <input type="number" name="income" placeholder="Annual Income (k$)" required>
+            <input type="number" name="score" placeholder="Spending Score (1-100)" required>
+            <button type="submit">Predict Strategy</button>
+        </form>
+
+        {% if cluster_name %}
+        <div class="result">
+            <strong>Segment:</strong> {{ cluster_name }} <br>
+            <strong>Strategy:</strong> {{ action }}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
